@@ -5,7 +5,7 @@ will end up being the actual code that combines all of our other states together
 Well if we wrote all of the code related to all the states in our application in one file you
 can imagine that it becomes really unwieldy. So what we want to do is break the code up into its
 individual sections*/
-// Storage location of our local storagedirectoryReducer{combineReducers} from 'redux';
+// Storage location of our local storage directoryReducer{combineReducers} from 'redux';
 import {persistReducer, persistStore} from "redux-persist";
 import storage from 'redux-persist/lib/storage';
 
