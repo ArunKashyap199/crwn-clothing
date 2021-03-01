@@ -13,6 +13,7 @@ export const selectCollectionForPreview = createSelector(
     (collections) =>
         collections ? Object.keys(collections).map(key => collections[key]) : []
 );
+
 // Collection Page For Each Collection
 export const selectCollection = collectionUrlParam => {
     return createSelector(
@@ -21,3 +22,13 @@ export const selectCollection = collectionUrlParam => {
     );
 };
 
+// Calling the async function in shop component to pass the async function for multiple function
+export const selectCollectionFetching = createSelector(
+    [selectShop],
+    shop => shop.isFetching
+);
+
+export const selectIsCollectionLoaded = createSelector(
+    [selectShop],
+    shop => !!shop.collections
+)
