@@ -10,10 +10,10 @@ import {
     CollectionItemsContainer
 } from './collection.styles';
 
-import './collection.styles';
 
 const CollectionPage = ({ collections }) => {
-    const { items, title } = collections;
+    const { items } = collections;
+    const { title } = collections;
     return (
         <CollectionPageContainer>
             <CollectionTitle>{title}</CollectionTitle>

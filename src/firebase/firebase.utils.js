@@ -68,7 +68,9 @@ export const addCollectionAndDocuments = async (collectionKey, objectToAdd) => {
 // doc getting the title and items name from collection.doc ( WHOLE )
 export const convertCollectionsSnapshotToMap = (collections) => {
     const transformedCollection = collections.docs.map((doc) => {
+
         const { title, items } = doc.data();
+
         return ({
             routeName: encodeURI(title.toLowerCase()),
             id: doc.id,
@@ -76,7 +78,7 @@ export const convertCollectionsSnapshotToMap = (collections) => {
             items,
         });
     });
-    // transformedCollection = display the whole items in a array
+
     return transformedCollection.reduce((accumulator, collection) => {
         accumulator[collection.title.toLowerCase()] = collection;
         return accumulator;
@@ -86,16 +88,14 @@ export const convertCollectionsSnapshotToMap = (collections) => {
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-/* Here we have include the provider which will take the user sign in from
+/* Here we have include the googleProvider which will take the user sign in from
 firebase with the help of GoogleAuthProvider() */
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account ' });
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: 'select_account ' });
 
-// Here we are passing the parameter of provider with is set for the Google Sign in
+// Here we are passing the parameter of googleProvider with is set for the Google Sign in
 // Also we can pass it through other social media account user authentications
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
+
 export default firebase;
-
-
-/**/
