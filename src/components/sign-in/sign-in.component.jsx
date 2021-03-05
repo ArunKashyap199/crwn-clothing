@@ -8,11 +8,13 @@ import { googleSignInStart, emailSignInStart } from "../../redux/user/user-actio
 import './sign-in.styles.scss';
 
 const SignIn = ( { emailSignInStart, googleSignInStart } ) => {
-    const [ userCredentials, setCredentials ] = useState({
-        email: '', password: ''
+    const [userCredentials, setCredentials] = useState({
+        email: '',
+        password: ''
     });
 
     const { email, password } = userCredentials;
+
     const handleSubmit = async event => {
         event.preventDefault();
 
@@ -22,9 +24,8 @@ const SignIn = ( { emailSignInStart, googleSignInStart } ) => {
 
     const handleChange = event => {
         const { value, name } = event.target;
-
-        setCredentials({ ...setCredentials, [ name ]: value });
-    }
+        setCredentials({ ...userCredentials, [ name ]: value });
+    };
 
     return (
         <div className="sign-in">
@@ -37,7 +38,7 @@ const SignIn = ( { emailSignInStart, googleSignInStart } ) => {
                     type="email"
                     value={ email }
                     handleChange={ handleChange }
-                    label="Email"
+                    label="email"
                     required
                 />
                 <FormInput
@@ -61,7 +62,7 @@ const SignIn = ( { emailSignInStart, googleSignInStart } ) => {
 
 const mapDispatchToProps = dispatch => ({
     googleSignInStart: () => dispatch(googleSignInStart()),
-    emailSignInStart: ( email, password ) => dispatch(emailSignInStart({ email, password }))
+    emailSignInStart: (email, password) => dispatch(emailSignInStart({ email, password }))
 });
 
 export default connect(null, mapDispatchToProps)(SignIn);
