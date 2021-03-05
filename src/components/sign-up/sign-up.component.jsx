@@ -37,7 +37,7 @@ const SignUp = ( { signUpStart } ) => {
         <div className='sign-up'>
             <h2 className='title'>I do not have a account</h2>
             <span> Sign up with email and password</span>
-            <span>{ this.state.error }</span>
+            <span>{ error }</span>
 
             <form className='sign-up-from' onSubmit={ handleSubmit }>
                 <FormInput
