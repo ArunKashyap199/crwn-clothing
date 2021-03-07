@@ -39,9 +39,10 @@ const StripeCheckoutButton = ({ price }) => {
             amount={priceForStripe}
             panelLabel='Pay Now'
             token={onToken}
+            shipping= 'vinod'
             stripeKey={publishableKey}
         />
-    );
-}
+    )
+};
 
 export default StripeCheckoutButton;

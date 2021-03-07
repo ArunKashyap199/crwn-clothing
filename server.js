@@ -36,11 +36,10 @@ app.post('/payment', (req, res) => {
     const body = {
         source: req.body.token.id,
         amount: req.body.amount,
-        currency: 'usd',
+        currency: 'inr',
         description: 'Software development services',
     };
     // stripeErr should be like that syntax
-    console.log("Chargers: ",charges);
     stripe.charges.create(body, (stripeErr, stripeRes) => {
         if (stripeErr) {
             res.status(500).send({ error: stripeErr });
